@@ -32,8 +32,9 @@
 **LeadFlow AI** is a complete AI-powered lead capture and management system consisting of:
 
 - **A public-facing landing page** (`lead-capture-landing-page/`) branded as **Saikumar.ai** — an AI automation services business based in Hyderabad.
-- **An admin dashboard** (`dashboard/`) branded as **LeadFlow AI** — for monitoring leads, workflow executions, and AI qualification results in real-time.
-- **An n8n automation workflow** (hosted externally at `https://sai.workflowshub.cloud`) that processes leads via OpenAI GPT-4o-mini, qualifies them, stores qualified leads in Google Sheets, and returns JSON responses.
+- **An admin dashboard** (`dashboard/`) branded as **LeadFlow AI** — for monitoring leads, workflow executions, and AI qualification results in real-time. Hosted on your VPS at `admin.workflowshub.cloud`.
+- **An n8n automation workflow** (hosted on your VPS at `https://sai.workflowshub.cloud`) that processes leads via OpenAI GPT-4o-mini, qualifies them, stores qualified leads in Google Sheets, and returns JSON responses.
+- **A security proxy** (`vps-proxy/`) — a Node.js Express app running on your VPS that handles API authentication and secure routing between the dashboard and n8n.
 
 The core value proposition: A visitor fills out the landing page form → n8n receives the webhook → AI qualifies the lead → Qualified leads are saved to Google Sheets → Both the landing page and dashboard get real-time feedback.
 
@@ -112,12 +113,13 @@ d:\n8n-auto-landing-pages\
 | **Styling** | Vanilla CSS (no Tailwind) | — |
 | **Fonts (Landing)** | Plus Jakarta Sans (Google Fonts) | — |
 | **Fonts (Dashboard)** | Inter + JetBrains Mono (Google Fonts) | — |
-| **Automation Engine** | n8n (self-hosted) | 2.3.6 |
+| **Automation Engine** | n8n (self-hosted) | 2.33.4 |
 | **AI Model** | OpenAI GPT-4o-mini | via n8n OpenAI node |
 | **Data Store** | Google Sheets (for qualified leads) | via n8n Google Sheets node |
-| **Hosting (n8n)** | `https://sai.workflowshub.cloud` | VPS |
+| **Hosting (All)** | Hostinger VPS (Ubuntu 24.04) | — |
+| **Process Manager** | PM2 / Systemd | — |
 
-**No backend server exists** — the frontend apps communicate directly with n8n via Vite dev server proxies.
+**Architecture Note:** The production system uses an Nginx reverse proxy to serve static files and routes API traffic through a Node.js security proxy (`vps-proxy/`) to keep credentials secure.
 
 ---
 
@@ -125,9 +127,9 @@ d:\n8n-auto-landing-pages\
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    LANDING PAGE (Port 5174)                  │
-│  React SPA → Lead form → POST /n8n-webhook/ai-lead-capture  │
-│  Vite proxy rewrites → /webhook/ai-lead-capture             │
+│                    LANDING PAGE (workflowshub.cloud)        │
+│  React Build Files → Nginx → POST /n8n-webhook/             │
+│  Nginx Proxy → http://localhost:5678/webhook/               │
 └──────────────────────┬──────────────────────────────────────┘
                        │ HTTP POST (JSON)
                        ▼
@@ -138,14 +140,13 @@ d:\n8n-auto-landing-pages\
 │    └── NO  → Not Qualified Response                          │
 │  Returns JSON response with qualification result             │
 └──────────────────────┬──────────────────────────────────────┘
-                       │ n8n REST API (/api/v1)
+                       │ Local Proxy (Port 3000)
                        ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                   DASHBOARD (Port 5173)                      │
-│  React SPA → Fetches workflow + executions from n8n API      │
-│  Vite proxy rewrites /n8n-api → /api/v1 (with API key)      │
-│  Parses execution data to extract leads, stats, AI results   │
-│  Auto-refreshes every 30 seconds                             │
+│              DASHBOARD (admin.workflowshub.cloud)           │
+│  Nginx → Serves Dashboard Static Files                      │
+│  API Calls (/n8n-api) → VPS Proxy (injects X-N8N-API-KEY)   │
+│  VPS Proxy → http://localhost:5678/api/v1                   │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -471,13 +472,22 @@ VITE_WEBHOOK_PATH=ai-lead-capture                # Webhook path (exposed to brow
 
 ### Dashboard (`dashboard/.env`)
 ```env
-N8N_BASE_URL=https://sai.workflowshub.cloud     # n8n instance URL (used by Vite proxy)
-N8N_API_KEY=<your-n8n-api-key>                   # n8n API key (injected server-side by Vite proxy, NEVER in browser)
-VITE_WORKFLOW_ID=z7hftIHKkaxIDHKMCflwE           # Workflow ID (exposed to browser)
-VITE_WEBHOOK_PATH=ai-lead-capture                # Webhook path (exposed to browser)
+# These are used for Local Development via Vite Proxy
+N8N_BASE_URL=https://sai.workflowshub.cloud
+N8N_API_KEY=n8n_api_...
+VITE_WORKFLOW_ID=z7hftIHKkaxIDHKMCflwE
+VITE_WEBHOOK_PATH=ai-lead-capture
 ```
 
-> **Security Note:** `N8N_BASE_URL` and `N8N_API_KEY` are NOT prefixed with `VITE_` so they are NOT bundled into the browser code. They are only used by the Vite dev server proxy. Only `VITE_*` variables are accessible in browser code via `import.meta.env`.
+### VPS Proxy (`/opt/leadflow-ai/proxy/.env`)
+```env
+# These are used for Production Proxy logic
+N8N_BASE_URL=http://127.0.0.1:5678
+N8N_API_KEY=n8n_api_...
+PORT=3000
+```
+
+> **Security Note:** The `N8N_API_KEY` is NEVER bundled into the browser code. In development, the Vite server holds it. In production, the Node Express proxy holds it.
 
 ---
 
@@ -601,8 +611,8 @@ The **Email to Lead** and **Email to Admin** Gmail nodes currently do not have a
 ### ⚠️ Google Sheets Node — Duplicate Handling
 The Google Sheets node now uses `appendOrUpdate` (v4.7) with `Email` as the matching column. If the sheet columns are renamed or the Email column header is missing, the duplicate detection will fail and all leads will be appended as new rows.
 
-### ⚠️ No Production Deployment Config
-Currently, both apps run via Vite dev server. There is no production deployment configuration (Nginx, Docker, Vercel, etc.). The Vite proxy will NOT work in production builds — a proper reverse proxy or API gateway is needed.
+### ✅ Production Deployment — Complete
+Both apps are now deployed on a Hostinger VPS using Nginx, PM2, and a custom security proxy. Static files are served via Nginx, and all API traffic is securely routed through the local proxy to n8n.
 
 ### ⚠️ Landing Page `index.html` Metadata
 The `index.html` still has the old "BrightSmile Dental Care" title and meta description from the original template. Should be updated to match "Saikumar.ai".
@@ -665,9 +675,9 @@ curl -s -X POST http://localhost:5174/n8n-webhook/ai-lead-capture \
 
 | App | Planned Domain | Status |
 |-----|---------------|--------|
-| Landing Page | `leadcapturepage.com` | Not deployed yet |
-| Admin Dashboard | `admin.leadcapture.com` | Not deployed yet |
-| n8n Instance | `sai.workflowshub.cloud` | ✅ Live |
+| Landing Page | `workflowshub.cloud` | ✅ Live (VPS) |
+| Admin Dashboard | `admin.workflowshub.cloud` | ✅ Live (VPS) |
+| n8n Instance | `sai.workflowshub.cloud` | ✅ Live (VPS) |
 | Google Sheets | N/A (backend only) | ✅ Live |
 
 ### Production Requirements
