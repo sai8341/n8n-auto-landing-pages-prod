@@ -1,85 +1,38 @@
-# LeadFlow AI — Lead Capture & Dashboard System
+# Saikumar.ai Monorepo
 
-A complete lead capture and management system powered by **n8n automation** and **AI qualification**.
+Mono-repo for Saikumar.ai: Lead Capture Landing Page & Admin Dashboard with n8n integration.
 
-## 📁 Project Structure
+## 🚀 Deployment (Netlify Monorepo)
 
+This repository is structured as a monorepo. You should create **two separate sites** on Netlify pointing to this same repository.
+
+### 1. Lead Capture Landing Page
+- **Site Name:** `saikumarai`
+- **Base directory:** `lead-capture-landing-page`
+- **Build command:** `npm run build`
+- **Publish directory:** `dist`
+- **Redirects:** Managed automatically via `lead-capture-landing-page/netlify.toml`.
+
+### 2. Admin Dashboard
+- **Site Name:** `saikumar-admin`
+- **Base directory:** `dashboard`
+- **Build command:** `npm run build`
+- **Publish directory:** `dist`
+- **Redirects & Proxy:** Managed via `dashboard/netlify.toml` and a Netlify Function.
+- **Environment Variables:**
+  - `N8N_BASE_URL`: `https://sai.workflowshub.cloud`
+  - `N8N_API_KEY`: Your n8n API Key (found in your `dashboard/.env`)
+
+### Why this setup?
+- **Security:** The dashboard uses a server-side Netlify Function to proxy n8n API calls, meaning your **n8n API Key is never exposed** to the user's browser.
+- **Automation:** Every push to the `main` branch will automatically trigger a re-deploy for both sites.
+
+---
+
+## 🛠️ Project Structure
 ```
-n8n-auto-landing-pages/
-├── lead-capture-landing-page/   # Public-facing dental landing page
-│   ├── src/                     # React components, styles, data
-│   ├── index.html               # Entry HTML
-│   ├── vite.config.js           # Vite config (port 5174, webhook proxy)
-│   ├── .env                     # Webhook URL configuration
-│   └── package.json
-│
-├── dashboard/                   # Admin dashboard for lead management
-│   ├── src/                     # React components, context, services
-│   ├── index.html               # Entry HTML
-│   ├── vite.config.js           # Vite config (port 5173, API proxy)
-│   ├── .env                     # n8n API key + webhook config
-│   └── package.json
-│
-└── README.md                    # This file
+/
+├── dashboard/                  # Admin dashboard (React + Vite)
+├── lead-capture-landing-page/  # Public landing page (React + Vite)
+└── AGENT.md                    # Detailed project documentation
 ```
-
-## 🔄 Data Flow
-
-```
-Customer visits Landing Page
-  → Fills out consultation form
-    → Form POSTs to n8n webhook (/webhook/ai-lead-capture)
-      → n8n workflow processes the lead:
-        → AI qualifies the lead (GPT-4o mini)
-        → Routes qualified leads to Google Sheets
-        → Sends response back to landing page
-          → Dashboard reads n8n executions via API
-            → Shows real-time lead updates, stats, execution history
-```
-
-## 🚀 Development
-
-### Landing Page (Port 5174)
-```bash
-cd lead-capture-landing-page
-npm install
-npm run dev
-# → http://localhost:5174
-```
-
-### Dashboard (Port 5173)
-```bash
-cd dashboard
-npm install
-npm run dev
-# → http://localhost:5173
-```
-
-## 🌐 Deployment Plan (Future)
-
-| App | Domain |
-|-----|--------|
-| Landing Page | `leadcapturepage.com` |
-| Admin Dashboard | `admin.leadcapture.com` |
-
-## ⚙️ Environment Variables
-
-### Landing Page (`.env`)
-```
-N8N_BASE_URL=https://your-n8n-instance.com
-VITE_WEBHOOK_PATH=ai-lead-capture
-```
-
-### Dashboard (`.env`)
-```
-N8N_BASE_URL=https://your-n8n-instance.com
-N8N_API_KEY=your-api-key
-VITE_WORKFLOW_ID=your-workflow-id
-VITE_WEBHOOK_PATH=ai-lead-capture
-```
-
-## 🔐 Security
-
-- **API Key**: Only used server-side via Vite proxy (dashboard only). Never exposed to browser.
-- **Webhook**: Public endpoint — no API key needed (landing page).
-- **`.env` files**: Gitignored to prevent accidental exposure.
