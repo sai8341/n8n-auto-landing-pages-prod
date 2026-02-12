@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Proxy the public webhook for lead submission
+[[redirects]]
+  from = "/n8n-webhook/*"
+  to = "https://sai.workflowshub.cloud/webhook/:splat"
+  status = 200
+  force = true
+
+# Support SPA routing (React Router)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
