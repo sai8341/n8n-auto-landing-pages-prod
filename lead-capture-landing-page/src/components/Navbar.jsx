@@ -24,24 +24,26 @@ function Navbar() {
         <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="container navbar-inner">
                 <a href="#" className="nav-brand">
-                    <span className="brand-logo">🤖</span>
-                    <div className="brand-text">
-                        <span className="brand-name">{business.name}</span>
-                    </div>
+                    <span className="brand-name">{business.name}</span>
                 </a>
 
-                <ul className={`nav-links ${mobileOpen ? 'open' : ''}`}>
-                    {navLinks.map((link) => (
-                        <li key={link.href}>
-                            <a
-                                href={link.href}
-                                onClick={() => setMobileOpen(false)}
-                            >
-                                {link.label}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
+                <div className={`nav-menu ${mobileOpen ? 'active' : ''}`}>
+                    <ul className="nav-links">
+                        {navLinks.map((link) => (
+                            <li key={link.href}>
+                                <a
+                                    href={link.href}
+                                    onClick={() => setMobileOpen(false)}
+                                >
+                                    {link.label}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                    <a href="#contact" className="btn btn-primary nav-cta-mobile" onClick={() => setMobileOpen(false)}>
+                        Free Strategy Call
+                    </a>
+                </div>
 
                 <div className="nav-right">
                     <a href="#contact" className="btn btn-primary nav-cta">
@@ -51,6 +53,7 @@ function Navbar() {
                         className="mobile-toggle"
                         onClick={() => setMobileOpen(!mobileOpen)}
                         aria-label="Toggle menu"
+                        aria-expanded={mobileOpen}
                     >
                         <span className={`hamburger ${mobileOpen ? 'open' : ''}`}>
                             <span />

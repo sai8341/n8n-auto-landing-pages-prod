@@ -39,7 +39,7 @@ function FAQ() {
                 <div className="faq-cta">
                     <p>Have a specific requirement?</p>
                     <a href="#contact" className="btn btn-primary">
-                        🚀 Ask Our Experts
+                        Ask Our Experts
                     </a>
                 </div>
             </div>

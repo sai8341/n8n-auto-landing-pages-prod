@@ -5,58 +5,63 @@
 
 .form-section .section-title {
     color: white;
+    text-align: left;
 }
 
 .form-section .section-subtitle {
     color: var(--text-muted);
+    text-align: left;
 }
 
 .form-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 100px;
     align-items: start;
 }
 
 .form-info {
-    padding-top: 20px;
+    padding-top: 40px;
 }
 
 /* Perks */
 .form-perks {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    margin: 40px 0;
+    gap: 32px;
+    margin: 48px 0;
 }
 
 .perk {
     display: flex;
-    gap: 16px;
+    gap: 20px;
     align-items: flex-start;
 }
 
 .perk-icon {
-    font-size: 1.4rem;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.05);
+    font-size: 1rem;
+    padding: 12px;
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--accent-primary);
     border-radius: 12px;
+    font-weight: 800;
 }
 
 .perk-text {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
 }
 
 .perk-text strong {
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     color: white;
 }
 
 .perk-text span {
-    font-size: 0.88rem;
+    font-size: 1rem;
     color: var(--text-muted);
+    line-height: 1.5;
 }
 
 /* Trust */
@@ -64,7 +69,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    margin-top: 40px;
+    margin-top: 48px;
 }
 
 .trust-avatar-group {
@@ -72,17 +77,17 @@
 }
 
 .trust-avatar {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     background: var(--brand-gradient);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     font-weight: 800;
     border: 2px solid var(--bg-dark);
-    margin-left: -10px;
+    margin-left: -12px;
 }
 
 .trust-avatar:first-child {
@@ -90,7 +95,7 @@
 }
 
 .trust-text {
-    font-size: 0.82rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
     font-weight: 500;
 }
@@ -98,62 +103,63 @@
 /* Form Card */
 .form-card {
     border-radius: var(--radius-xl);
-    padding: 40px;
+    padding: 50px;
+    background: #0f172a !important;
 }
 
 .form-card.glass {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .form-card-header {
-    margin-bottom: 32px;
+    margin-bottom: 40px;
 }
 
 .form-card-header h3 {
-    font-size: 1.4rem;
-    font-weight: 800;
-    margin-bottom: 8px;
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 12px;
+    color: white;
 }
 
 .form-card-header p {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--text-muted);
 }
 
 .capture-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
 }
 
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 24px;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
 }
 
 .form-group label {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    color: var(--text-muted);
+    color: var(--text-white);
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select {
-    padding: 14px 16px;
-    border-radius: var(--radius-md);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.04);
+    padding: 16px 20px;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.03);
     color: white;
-    font-size: 0.95rem;
+    font-size: 1rem;
     outline: none;
     transition: var(--transition);
 }
@@ -162,23 +168,24 @@
 .form-group textarea:focus,
 .form-group select:focus {
     border-color: var(--accent-primary);
-    background: rgba(255, 255, 255, 0.06);
-    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
 }
 
 .form-group select option {
-    background: #111827;
+    background: #0f172a;
     color: white;
 }
 
 .submit-btn {
-    margin-top: 10px;
-    font-size: 1rem;
-    padding: 16px;
+    margin-top: 12px;
+    font-size: 1.1rem;
+    padding: 18px;
+    border-radius: var(--radius-lg);
 }
 
 .form-disclaimer {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     color: var(--text-muted);
     text-align: center;
 }
@@ -190,34 +197,56 @@
 }
 
 .success-card {
-    max-width: 540px;
-    padding: 60px 40px;
+    max-width: 600px;
+    padding: 80px 48px;
     text-align: center;
     border-radius: var(--radius-xl);
+    background: #0f172a !important;
 }
 
 .success-icon {
-    font-size: 4rem;
+    font-size: 5rem;
+    color: var(--success);
     margin-bottom: 24px;
 }
 
 .success-card h2 {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     font-weight: 900;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 .success-card p {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     color: var(--text-muted);
     line-height: 1.6;
-    margin-bottom: 32px;
+    margin-bottom: 40px;
 }
 
 @media (max-width: 1024px) {
     .form-layout {
         grid-template-columns: 1fr;
         gap: 60px;
+    }
+
+    .form-info {
+        text-align: center;
+    }
+
+    .form-info .section-label,
+    .form-info .section-title,
+    .form-info .section-subtitle {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .perk {
+        text-align: left;
+    }
+
+    .form-trust {
+        justify-content: center;
     }
 }
 
@@ -227,6 +256,10 @@
     }
 
     .form-card {
-        padding: 32px 20px;
+        padding: 40px 24px;
+    }
+
+    .form-card-header h3 {
+        font-size: 1.5rem;
     }
 }

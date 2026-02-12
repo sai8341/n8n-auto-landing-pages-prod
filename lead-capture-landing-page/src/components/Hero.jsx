@@ -30,7 +30,7 @@ function Hero() {
 
                     <div className="hero-actions">
                         <a href="#contact" className="btn btn-primary btn-lg">
-                            🚀 {heroData.cta}
+                            {heroData.cta}
                         </a>
                         <a href="#services" className="btn btn-outline">
                             {heroData.ctaSecondary} →
@@ -55,7 +55,6 @@ function Hero() {
                 <div className="hero-visual">
                     <div className="hero-card glass">
                         <div className="hero-card-inner">
-                            <div className="hero-emoji">🤖</div>
                             <h3>AI-First Operations</h3>
                             <p>Automate anything. Scale everything.</p>
                             <div className="hero-card-stats">
@@ -68,9 +67,6 @@ function Hero() {
                             </div>
                         </div>
                     </div>
-                    <div className="floating-badge badge-1">⚡ Ultra-Fast ROI</div>
-                    <div className="floating-badge badge-2">✅ API-First</div>
-                    <div className="floating-badge badge-3">🧠 Smart Agents</div>
                 </div>
             </div>
         </section>

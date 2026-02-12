@@ -6,7 +6,7 @@ function UseCases() {
         <section id="use-cases" className="section use-cases-section">
             <div className="container">
                 <div className="section-header">
-                    <span className="section-label">🚀 In Action</span>
+                    <span className="section-label">AI in Action</span>
                     <h2 className="section-title">Industry Use Cases</h2>
                     <p className="section-subtitle">
                         See how our AI agents and automated workflows are being deployed across

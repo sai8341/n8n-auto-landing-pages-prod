@@ -69,7 +69,7 @@ function LeadCaptureForm() {
                 <div className="container">
                     <div className="success-wrapper animate-in">
                         <div className="success-card glass">
-                            <div className="success-icon">🚀</div>
+                            <div className="success-icon">✓</div>
                             <h2>Inbound Request Received!</h2>
                             <p>
                                 Thank you for your interest in <strong>Saikumar.ai</strong>. Our automation specialist
@@ -95,7 +95,7 @@ function LeadCaptureForm() {
                 <div className="form-layout">
                     {/* Left: Persuasion */}
                     <div className="form-info">
-                        <span className="section-label">⚡ Future-Proof Your Business</span>
+                        <span className="section-label">Future-Proof Your Business</span>
                         <h2 className="section-title">
                             Ready to <span className="highlight">Automate</span> Your Growth?
                         </h2>
@@ -106,14 +106,14 @@ function LeadCaptureForm() {
 
                         <div className="form-perks">
                             <div className="perk">
-                                <span className="perk-icon">🎯</span>
+                                <span className="perk-icon">→</span>
                                 <div className="perk-text">
                                     <strong>Personalized AI Audit</strong>
                                     <span>We'll identify the best automation opportunities for your specific niche.</span>
                                 </div>
                             </div>
                             <div className="perk">
-                                <span className="perk-icon">⚙️</span>
+                                <span className="perk-icon">→</span>
                                 <div className="perk-text">
                                     <strong>No-Code & Custom Solutions</strong>
                                     <span>From simple n8n workflows to complex custom AI agents.</span>
@@ -141,7 +141,7 @@ function LeadCaptureForm() {
                     {/* Right: Form */}
                     <div className="form-card glass">
                         <div className="form-card-header">
-                            <h3>📅 Schedule Your Free Call</h3>
+                            <h3>Schedule Your Free Call</h3>
                             <p>Enter your details below to get started</p>
                         </div>
 

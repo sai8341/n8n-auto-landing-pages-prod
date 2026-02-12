@@ -3,7 +3,7 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 140px 0 100px;
+    padding: 160px 0 100px;
     background: var(--bg-dark);
     color: white;
     overflow: hidden;
@@ -43,28 +43,29 @@
 .hero-content {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
-    gap: 80px;
+    gap: 100px;
     align-items: center;
     position: relative;
     z-index: 1;
 }
 
 .hero-text {
-    max-width: 640px;
+    max-width: 680px;
+    text-align: left;
 }
 
 .hero-badge {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 8px 20px;
+    padding: 10px 24px;
     background: rgba(99, 102, 241, 0.1);
     border: 1px solid rgba(99, 102, 241, 0.2);
     border-radius: var(--radius-full);
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     font-weight: 700;
     color: var(--accent-primary);
-    margin-bottom: 24px;
+    margin-bottom: 32px;
 }
 
 .badge-dot {
@@ -76,25 +77,31 @@
 }
 
 .hero-title {
-    font-size: 3.8rem;
+    font-size: 4.2rem;
     font-weight: 900;
     line-height: 1.1;
-    margin-bottom: 24px;
-    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+    letter-spacing: -0.04em;
 }
 
 .hero-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.35rem;
     color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 40px;
+    line-height: 1.6;
+    margin-bottom: 48px;
+    max-width: 600px;
 }
 
 .hero-actions {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 20px;
-    margin-bottom: 48px;
+    margin-bottom: 60px;
+}
+
+.hero-actions .btn {
+    min-width: 220px;
 }
 
 .hero-trust {
@@ -108,18 +115,18 @@
 }
 
 .trust-avatar {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: var(--brand-gradient);
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     font-weight: 800;
     border: 3px solid var(--bg-dark);
-    margin-left: -12px;
+    margin-left: -14px;
 }
 
 .trust-avatar:first-child {
@@ -132,12 +139,14 @@
 }
 
 .trust-stars {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    color: #fbbf24;
 }
 
 .trust-count {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
+    font-weight: 500;
 }
 
 /* Visual Card */
@@ -152,100 +161,90 @@
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
     border-radius: var(--radius-xl);
     width: 100%;
-    max-width: 440px;
+    max-width: 480px;
 }
 
 .hero-card-inner {
     background: #0f172a;
     border-radius: calc(var(--radius-xl) - 2px);
-    padding: 48px 32px;
-    text-align: center;
-}
-
-.hero-emoji {
-    font-size: 4.5rem;
-    margin-bottom: 20px;
+    padding: 60px 40px;
 }
 
 .hero-card-inner h3 {
-    font-size: 1.6rem;
-    font-weight: 800;
-    margin-bottom: 10px;
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 12px;
+    color: white;
 }
 
 .hero-card-inner p {
     color: var(--text-muted);
-    font-size: 0.95rem;
-    margin-bottom: 32px;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
 }
 
 .hero-card-stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 24px;
 }
 
 .hero-stat {
-    padding: 16px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-md);
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    text-align: left;
 }
 
 .stat-value {
     display: block;
-    font-size: 1.25rem;
-    font-weight: 800;
+    font-size: 1.6rem;
+    font-weight: 900;
     color: var(--accent-primary);
+    margin-bottom: 4px;
 }
 
 .stat-label {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-/* Floating badges */
-.floating-badge {
-    position: absolute;
-    padding: 12px 20px;
-    background: rgba(255, 255, 255, 1);
-    color: var(--text-dark);
-    border-radius: var(--radius-full);
-    font-size: 0.8rem;
-    font-weight: 700;
-    box-shadow: var(--shadow-lg);
-    z-index: 10;
+@media (max-width: 1200px) {
+    .hero-title {
+        font-size: 3.5rem;
+    }
 }
 
-.badge-1 {
-    top: 10%;
-    right: -20px;
-}
+@media (max-width: 1024px) {
+    .hero {
+        padding: 140px 0 80px;
+    }
 
-.badge-2 {
-    bottom: 15%;
-    left: -30px;
-}
-
-.badge-3 {
-    bottom: 5%;
-    right: 5%;
-}
-
-@media (max-width: 1100px) {
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 60px;
+        gap: 80px;
     }
 
     .hero-text {
         margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-subtitle {
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .hero-actions {
         justify-content: center;
+        width: 100%;
     }
 
     .hero-trust {
@@ -253,24 +252,42 @@
     }
 
     .hero-title {
-        font-size: 3rem;
+        font-size: 3.2rem;
     }
 }
 
 @media (max-width: 640px) {
     .hero-title {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
     }
 
-    .floating-badge {
-        display: none;
+    .hero-subtitle {
+        font-size: 1.1rem;
     }
 
     .hero-actions {
         flex-direction: column;
+        gap: 16px;
     }
 
     .hero-actions .btn {
         width: 100%;
+        min-width: 0;
+    }
+
+    .hero-card-inner {
+        padding: 40px 24px;
+    }
+
+    .hero-card-stats {
+        gap: 16px;
+    }
+
+    .hero-stat {
+        padding: 16px;
+    }
+
+    .stat-value {
+        font-size: 1.3rem;
     }
 }
