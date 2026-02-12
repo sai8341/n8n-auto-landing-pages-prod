@@ -1,0 +1,23 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Proxy the REST API calls to our secure Netlify Function
+# (This keeps the n8n API key safe on the server side)
+[[redirects]]
+  from = "/n8n-api/*"
+  to = "/.netlify/functions/n8n-api-proxy"
+  status = 200
+
+# Proxy the public webhook for lead submission
+[[redirects]]
+  from = "/n8n-webhook/*"
+  to = "https://sai.workflowshub.cloud/webhook/:splat"
+  status = 200
+  force = true
+
+# Support SPA routing (React Router)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
