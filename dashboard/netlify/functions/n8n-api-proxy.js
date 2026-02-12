@@ -1,13 +1,24 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
-exports.handler = async function (event, context) {
+export const handler = async function (event, context) {
     const n8nBaseUrl = process.env.N8N_BASE_URL || 'https://sai.workflowshub.cloud';
     const n8nApiKey = process.env.N8N_API_KEY;
 
-    // Extract the path after /n8n-api/
-    // Example: /.netlify/functions/n8n-api-proxy/workflows/123 -> /api/v1/workflows/123
-    const path = event.path.replace('/.netlify/functions/n8n-api-proxy', '') || '/';
-    const targetUrl = `${n8nBaseUrl}/api/v1${path}${event.rawQuery ? '?' + event.rawQuery : ''}`;
+    if (!n8nApiKey) {
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ error: 'N8N_API_KEY is not configured in Netlify' })
+        };
+    }
+
+    // Extract the actual API path
+    // We need to remove both the Netlify function path AND the /n8n-api prefix
+    let path = event.path
+        .replace('/.netlify/functions/n8n-api-proxy', '')
+        .replace('/n8n-api', '') || '/';
+
+    // Construct the final target URL
+    const targetUrl = `${n8nBaseUrl.replace(/\/$/, '')}/api/v1${path}${event.rawQuery ? '?' + event.rawQuery : ''}`;
 
     console.log(`Proxying request to: ${targetUrl}`);
 
@@ -16,9 +27,10 @@ exports.handler = async function (event, context) {
             method: event.httpMethod,
             headers: {
                 'X-N8N-API-KEY': n8nApiKey,
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
-            body: event.httpMethod !== 'GET' ? event.body : undefined
+            body: (event.httpMethod !== 'GET' && event.httpMethod !== 'HEAD') ? event.body : undefined
         });
 
         const data = await response.text();
@@ -36,7 +48,7 @@ exports.handler = async function (event, context) {
         console.error('Proxy Error:', error);
         return {
             statusCode: 500,
-            body: JSON.stringify({ error: 'Failed to proxy request to n8n' })
+            body: JSON.stringify({ error: 'Failed to proxy request to n8n', details: error.message })
         };
     }
 };
