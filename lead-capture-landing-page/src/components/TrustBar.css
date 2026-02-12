@@ -1,0 +1,39 @@
+.trust-bar {
+    background: var(--bg-dark);
+    padding: 28px 0;
+}
+
+.trust-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.trust-icon {
+    font-size: 1.1rem;
+}
+
+.trust-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+    .trust-grid {
+        gap: 20px 32px;
+    }
+
+    .trust-label {
+        font-size: 0.75rem;
+    }
+}

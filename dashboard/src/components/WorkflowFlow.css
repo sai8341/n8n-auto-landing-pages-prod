@@ -1,0 +1,453 @@
+.workflow-page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ===== INFO BAR ===== */
+.wf-info-bar {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+}
+
+.wf-info-left h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.wf-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.wf-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.wf-meta code {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--accent-primary);
+    background: var(--bg-input);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.wf-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.wf-status-dot.active {
+    background: var(--success);
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.5);
+}
+
+.wf-status-dot.inactive {
+    background: var(--text-muted);
+}
+
+/* ===== LAYOUT ===== */
+.wf-layout {
+    display: flex;
+    gap: 20px;
+}
+
+/* ===== CANVAS ===== */
+.wf-canvas {
+    flex: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 40px 32px;
+    overflow-x: auto;
+}
+
+.flow-diagram {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    min-width: 600px;
+}
+
+/* ===== FLOW ROW ===== */
+.flow-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    justify-content: center;
+}
+
+/* ===== FLOW NODE ===== */
+.flow-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 18px 24px;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all 0.3s;
+    min-width: 140px;
+    text-align: center;
+    position: relative;
+}
+
+.flow-node:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-glow);
+}
+
+.flow-node.selected {
+    border-color: var(--accent-primary);
+    background: rgba(var(--accent-primary-rgb), 0.08);
+    box-shadow: 0 0 20px rgba(var(--accent-primary-rgb), 0.2);
+    animation: nodeGlow 2s infinite;
+}
+
+.flow-node.webhook {
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+.flow-node.webhook:hover,
+.flow-node.webhook.selected {
+    border-color: #3b82f6;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+.flow-node.ai {
+    border-color: rgba(168, 85, 247, 0.3);
+}
+
+.flow-node.ai:hover,
+.flow-node.ai.selected {
+    border-color: #a855f7;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+}
+
+.flow-node.condition {
+    border-color: rgba(245, 158, 11, 0.3);
+    border-radius: 12px;
+}
+
+.flow-node.condition:hover,
+.flow-node.condition.selected {
+    border-color: #f59e0b;
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
+}
+
+.flow-node.sheets {
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.flow-node.sheets:hover,
+.flow-node.sheets.selected {
+    border-color: #10b981;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+.flow-node.response.qualified {
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.flow-node.response.qualified:hover,
+.flow-node.response.qualified.selected {
+    border-color: #10b981;
+}
+
+.flow-node.response.not-qualified {
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+.flow-node.response.not-qualified:hover,
+.flow-node.response.not-qualified.selected {
+    border-color: #ef4444;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
+}
+
+.node-icon {
+    font-size: 1.8rem;
+}
+
+.node-name {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.node-type {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+/* ===== CONNECTORS ===== */
+.flow-connector {
+    width: 60px;
+    height: 10px;
+    min-width: 60px;
+}
+
+.connector-line {
+    stroke: rgba(var(--accent-primary-rgb), 0.4);
+    stroke-width: 2;
+    stroke-dasharray: 6, 3;
+    animation: flowLine 1s linear infinite;
+}
+
+.connector-line.qualified {
+    stroke: rgba(16, 185, 129, 0.5);
+}
+
+.connector-line.error {
+    stroke: rgba(239, 68, 68, 0.5);
+}
+
+.connector-arrow {
+    fill: rgba(var(--accent-primary-rgb), 0.6);
+}
+
+.connector-arrow.qualified {
+    fill: rgba(16, 185, 129, 0.7);
+}
+
+.connector-arrow.error {
+    fill: rgba(239, 68, 68, 0.7);
+}
+
+/* ===== BRANCHES ===== */
+.branch-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 80px;
+}
+
+.branch {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.branch-label-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.branch-label {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.branch-label.qualified {
+    background: var(--success-bg);
+    color: var(--success);
+}
+
+.branch-label.not-qualified {
+    background: var(--error-bg);
+    color: var(--error);
+}
+
+.branch-connector {
+    width: 100px;
+    height: 10px;
+}
+
+.branch-nodes {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding-left: 20px;
+}
+
+/* ===== DETAIL PANEL ===== */
+.node-detail-panel {
+    width: 340px;
+    min-width: 340px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    height: fit-content;
+    position: sticky;
+    top: 90px;
+}
+
+.panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color);
+    background: rgba(var(--accent-primary-rgb), 0.04);
+}
+
+.panel-header h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.panel-close {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    transition: all 0.2s;
+}
+
+.panel-close:hover {
+    background: var(--error-bg);
+    border-color: var(--error);
+    color: var(--error);
+}
+
+.panel-body {
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.panel-section h4 {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.panel-section p {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.panel-code {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent-primary);
+    background: var(--bg-input);
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    display: block;
+}
+
+.panel-config {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--success);
+    background: var(--bg-input);
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+.panel-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.panel-list li {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    padding: 4px 0;
+    padding-left: 16px;
+    position: relative;
+}
+
+.panel-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+}
+
+.panel-prompt {
+    font-style: italic;
+    color: var(--accent-secondary) !important;
+}
+
+@media (max-width: 1024px) {
+    .wf-layout {
+        flex-direction: column;
+    }
+
+    .node-detail-panel {
+        width: 100%;
+        min-width: auto;
+        position: static;
+        order: -1;
+        /* Show panel above canvas when selected on mobile? Or below? Let's keep it below. */
+    }
+}
+
+@media (max-width: 768px) {
+    .wf-canvas {
+        padding: 30px 16px;
+        background: radial-gradient(circle at 2px 2px, rgba(99, 102, 241, 0.05) 1px, transparent 0);
+        background-size: 24px 24px;
+    }
+
+    .flow-diagram {
+        min-width: 500px;
+    }
+
+    .branch-container {
+        padding-left: 20px;
+    }
+
+    .wf-meta-row {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .flow-node {
+        padding: 14px 18px;
+        min-width: 120px;
+    }
+
+    .node-icon {
+        font-size: 1.5rem;
+    }
+
+    .wf-info-bar {
+        padding: 16px;
+    }
+}
