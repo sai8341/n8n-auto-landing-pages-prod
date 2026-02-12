@@ -8,7 +8,6 @@ function Footer() {
                 <div className="footer-grid">
                     <div className="footer-brand">
                         <div className="footer-logo">
-                            <span className="footer-logo-icon">🤖</span>
                             <span className="footer-logo-text">{business.name}</span>
                         </div>
                         <p className="footer-desc">
@@ -16,9 +15,9 @@ function Footer() {
                             intelligent workflow systems. Built in Hyderabad for the world.
                         </p>
                         <div className="footer-social">
-                            <a href={business.social.linkedin} aria-label="LinkedIn">🔗</a>
-                            <a href={business.social.twitter} aria-label="Twitter">🐦</a>
-                            <a href={business.social.instagram} aria-label="Instagram">📸</a>
+                            <a href={business.social.linkedin} aria-label="LinkedIn">LinkedIn</a>
+                            <a href={business.social.twitter} aria-label="Twitter">Twitter</a>
+                            <a href={business.social.instagram} aria-label="Instagram">Instagram</a>
                         </div>
                     </div>
 
@@ -47,11 +46,11 @@ function Footer() {
                     <div className="footer-col">
                         <h4>Contact</h4>
                         <ul className="footer-contact">
-                            <li>📍 {business.address}</li>
-                            <li>📞 {business.phone}</li>
-                            <li>✉️ {business.email}</li>
-                            <li>🕐 {business.hours.weekdays}</li>
-                            <li>🕐 {business.hours.weekend}</li>
+                            <li>{business.address}</li>
+                            <li>{business.phone}</li>
+                            <li>{business.email}</li>
+                            <li>{business.hours.weekdays}</li>
+                            <li>{business.hours.weekend}</li>
                         </ul>
                     </div>
                 </div>

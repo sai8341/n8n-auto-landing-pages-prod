@@ -7,7 +7,7 @@ function WhyChooseUs() {
             <div className="container">
                 <div className="why-layout">
                     <div className="why-left">
-                        <span className="section-label">🌟 Why Saikumar.ai</span>
+                        <span className="section-label">Why Saikumar.ai</span>
                         <h2 className="section-title">The Competitive Advantage</h2>
                         <p className="section-subtitle">
                             In a world where speed and intelligence defined the winners, we provide

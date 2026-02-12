@@ -12,7 +12,7 @@ function Testimonials() {
         <section id="testimonials" className="section testimonials-section">
             <div className="container">
                 <div className="section-header">
-                    <span className="section-label">💬 Success Stories</span>
+                    <span className="section-label">Success Stories</span>
                     <h2 className="section-title">What Our Clients Say</h2>
                     <p className="section-subtitle">
                         See how forward-thinking business owners are leveraging Saikumar.ai
@@ -24,8 +24,8 @@ function Testimonials() {
                     <div className="testimonial-main glass">
                         <div className="testimonial-quote">"</div>
                         <p className="testimonial-text">{testimonials[active].text}</p>
-                        <div className="testimonial-stars">
-                            {'⭐'.repeat(testimonials[active].rating)}
+                        <div className="testimonial-rating">
+                            {testimonials[active].rating}.0 Rating
                         </div>
                         <div className="testimonial-author">
                             <div className="author-avatar">
@@ -72,7 +72,7 @@ function Testimonials() {
                                 <span className="mini-name">{t.name}</span>
                                 <span className="mini-service">{t.service}</span>
                             </div>
-                            <span className="mini-rating">⭐ {t.rating}.0</span>
+                            <span className="mini-rating">{t.rating}.0 Rating</span>
                         </div>
                     ))}
                 </div>

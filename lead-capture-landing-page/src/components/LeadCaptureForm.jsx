@@ -120,7 +120,7 @@ function LeadCaptureForm() {
                                 </div>
                             </div>
                             <div className="perk">
-                                <span className="perk-icon">�</span>
+                                <span className="perk-icon">→</span>
                                 <div className="perk-text">
                                     <strong>ROI-Focused Approach</strong>
                                     <span>We only build solutions that either save money or generate revenue.</span>
@@ -245,7 +245,7 @@ function LeadCaptureForm() {
                             </button>
 
                             <p className="form-disclaimer">
-                                🔒 Your data is kept private and secure.
+                                Your data is kept private and secure.
                             </p>
                         </form>
                     </div>

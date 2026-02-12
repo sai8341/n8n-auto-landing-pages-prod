@@ -46,7 +46,7 @@ function Hero() {
                             ))}
                         </div>
                         <div className="trust-text">
-                            <span className="trust-stars">⭐⭐⭐⭐⭐</span>
+                            <span className="trust-stars">5.0 Star Rating</span>
                             <span className="trust-count">Rated 4.9/5 by 50+ business owners</span>
                         </div>
                     </div>

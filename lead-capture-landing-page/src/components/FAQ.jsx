@@ -11,7 +11,7 @@ function FAQ() {
         <section id="faq" className="section faq-section">
             <div className="container">
                 <div className="section-header">
-                    <span className="section-label">❓ FAQ</span>
+                    <span className="section-label">FAQ</span>
                     <h2 className="section-title">Common Questions</h2>
                     <p className="section-subtitle">
                         New to AI automation? We have answered the most common questions from
