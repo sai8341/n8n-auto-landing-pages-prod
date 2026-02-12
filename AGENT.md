@@ -5,29 +5,47 @@
 
 ---
 
-## Table of Contents
+## 🚨 Core Directives & Guidelines for AI Assistants
 
-1. [Project Overview](#1-project-overview)
-2. [Project Structure](#2-project-structure)
-3. [Technology Stack](#3-technology-stack)
-4. [Application Architecture](#4-application-architecture)
-5. [Landing Page — Details](#5-landing-page--details)
-6. [Dashboard — Details](#6-dashboard--details)
-7. [n8n Workflow — Details](#7-n8n-workflow--details)
-8. [Google Sheets Integration](#8-google-sheets-integration)
-9. [Data Flow (End-to-End)](#9-data-flow-end-to-end)
-10. [Environment Variables](#10-environment-variables)
-11. [Proxy Configuration](#11-proxy-configuration)
-12. [API Contracts](#12-api-contracts)
-13. [Key Design Decisions](#13-key-design-decisions)
-14. [Known Issues & Gotchas](#14-known-issues--gotchas)
-15. [Development Setup](#15-development-setup)
-16. [Deployment Plan](#16-deployment-plan)
-17. [File-by-File Reference](#17-file-by-file-reference)
+Whenever you work on any issue in this project, you must follow these instructions strictly:
+
+1. **Analyze with Care**: Analyze the problem carefully and review the relevant code, logs, configurations, and workflows.
+2. **Behavioral Gap Analysis**: Compare the actual behavior with the expected behavior.
+3. **Evidence-Based Diagnosis**: Identify the exact root cause based on clear evidence. **Do not guess or hallucinate.**
+4. **Efficiency Over Repetition**: Do not fall into repetitive troubleshooting loops or repeat ineffective steps. Focus directly on the real issue and fix it efficiently.
+5. **Transparency**: Clearly explain the root cause before implementing any solution.
+6. **Consult First**: If you have any doubts about the project, refer to this `AGENT.md` file first.
+7. **Comprehensive Context**: If doubts still remain, scan and review the entire project comprehensively to gain full understanding before proceeding.
+8. **Clarify, Don't Assume**: Avoid making assumptions. Ask for clarification if required.
+
+This document serves as your permanent reference. Always refer to `AGENT.md` first to ensure consistent understanding, accurate implementation, and reliable decision-making across all updates.
 
 ---
 
-## 1. Project Overview
+## Table of Contents
+
+1. [Core Directives & Guidelines](#🚨-core-directives--guidelines-for-ai-assistants)
+2. [Project Overview](#2-project-overview)
+3. [Project Structure](#3-project-structure)
+4. [Technology Stack](#4-technology-stack)
+5. [Application Architecture](#5-application-architecture)
+6. [Landing Page — Details](#6-landing-page--details)
+7. [Dashboard — Details](#7-dashboard--details)
+8. [n8n Workflow — Details](#8-n8n-workflow--details)
+9. [Google Sheets Integration](#9-google-sheets-integration)
+10. [Data Flow (End-to-End)](#10-data-flow-end-to-end)
+11. [Environment Variables](#11-environment-variables)
+12. [Proxy Configuration](#12-proxy-configuration)
+13. [API Contracts](#13-api-contracts)
+14. [Key Design Decisions](#14-key-design-decisions)
+15. [Known Issues & Gotchas](#15-known-issues--gotchas)
+16. [Development Setup](#16-development-setup)
+17. [Deployment Plan](#17-deployment-plan)
+18. [File-by-File Reference](#18-file-by-file-reference)
+
+---
+
+## 2. Project Overview
 
 **LeadFlow AI** is a complete AI-powered lead capture and management system consisting of:
 
@@ -40,7 +58,7 @@ The core value proposition: A visitor fills out the landing page form → n8n re
 
 ---
 
-## 2. Project Structure
+## 3. Project Structure
 
 ```
 d:\n8n-auto-landing-pages\
@@ -104,7 +122,7 @@ d:\n8n-auto-landing-pages\
 
 ---
 
-## 3. Technology Stack
+## 4. Technology Stack
 
 | Layer | Technology | Version |
 |-------|-----------|---------|
@@ -123,7 +141,7 @@ d:\n8n-auto-landing-pages\
 
 ---
 
-## 4. Application Architecture
+## 5. Application Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -152,7 +170,7 @@ d:\n8n-auto-landing-pages\
 
 ---
 
-## 5. Landing Page — Details
+## 6. Landing Page — Details
 
 ### Business Identity
 - **Brand:** Saikumar.ai
@@ -199,7 +217,7 @@ d:\n8n-auto-landing-pages\
 
 ---
 
-## 6. Dashboard — Details
+## 7. Dashboard — Details
 
 ### Tab-Based Navigation
 | Tab | Component | Description |
@@ -240,7 +258,7 @@ The dashboard has **NO mock data** and **NO separate backend**. All data comes f
 
 ---
 
-## 7. n8n Workflow — Details
+## 8. n8n Workflow — Details
 
 ### Workflow Identity
 | Property | Value |
@@ -402,7 +420,7 @@ Tested and verified in execution **#3849**.
 
 ---
 
-## 8. Google Sheets Integration
+## 9. Google Sheets Integration
 
 | Property | Value |
 |----------|-------|
@@ -417,7 +435,7 @@ Only **QUALIFIED** leads are written to the sheet. The node uses `appendOrUpdate
 
 ---
 
-## 9. Data Flow (End-to-End)
+## 10. Data Flow (End-to-End)
 
 ### Flow 1: Lead Submission (Landing Page → n8n → Google Sheets)
 ```
@@ -462,7 +480,7 @@ Only **QUALIFIED** leads are written to the sheet. The node uses `appendOrUpdate
 
 ---
 
-## 10. Environment Variables
+## 11. Environment Variables
 
 ### Landing Page (`lead-capture-landing-page/.env`)
 ```env
@@ -491,7 +509,7 @@ PORT=3000
 
 ---
 
-## 11. Proxy Configuration
+## 12. Proxy Configuration
 
 ### Landing Page Vite Proxy (`lead-capture-landing-page/vite.config.js`)
 ```
@@ -511,7 +529,7 @@ PORT=3000
 
 ---
 
-## 12. API Contracts
+## 13. API Contracts
 
 ### Webhook Request (from frontend to n8n)
 ```
@@ -565,7 +583,7 @@ Both proxied through Vite to `/api/v1/*` with API key injected.
 
 ---
 
-## 13. Key Design Decisions
+## 14. Key Design Decisions
 
 ### 1. No Separate Backend
 The project intentionally has **no Express/Node.js backend**. Vite's dev server proxy handles all API routing. For production, a reverse proxy (Nginx/Cloudflare) or serverless functions would be needed.
@@ -597,7 +615,7 @@ Only variables prefixed with `VITE_` are exposed to the browser bundle. Server-o
 
 ---
 
-## 14. Known Issues & Gotchas
+## 15. Known Issues & Gotchas
 
 ### ✅ AI Prompt — Fixed
 The AI Qualification node's system prompt has been updated to correctly reference **Saikumar.ai** and AI automation services (was previously "dental clinic"). The prompt now evaluates leads based on their interest in automating business processes, AI agents, or custom AI solutions.
@@ -626,7 +644,7 @@ The `.env` files are in `.gitignore` and will NOT be in version control. New dev
 
 ---
 
-## 15. Development Setup
+## 16. Development Setup
 
 ### Prerequisites
 - Node.js (v18+ recommended)
@@ -671,7 +689,7 @@ curl -s -X POST http://localhost:5174/n8n-webhook/ai-lead-capture \
 
 ---
 
-## 16. Deployment Plan
+## 17. Deployment Plan
 
 | App | Planned Domain | Status |
 |-----|---------------|--------|
@@ -691,7 +709,7 @@ curl -s -X POST http://localhost:5174/n8n-webhook/ai-lead-capture \
 
 ---
 
-## 17. File-by-File Reference
+## 18. File-by-File Reference
 
 ### Landing Page Files
 | File | Lines | Purpose |
