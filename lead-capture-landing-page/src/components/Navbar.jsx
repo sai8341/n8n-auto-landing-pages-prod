@@ -15,6 +15,7 @@ function Navbar() {
     const navLinks = [
         { label: 'Solutions', href: '#services' },
         { label: 'Why AI', href: '#why-us' },
+        { label: 'Projects', href: '#projects' },
         { label: 'Use Cases', href: '#use-cases' },
         { label: 'Results', href: '#testimonials' },
         { label: 'FAQ', href: '#faq' },
@@ -24,6 +25,7 @@ function Navbar() {
         <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
             <div className="container navbar-inner">
                 <a href="#" className="nav-brand">
+                    <span className="brand-logo">🌌</span>
                     <span className="brand-name">{business.name}</span>
                 </a>
 
@@ -40,14 +42,18 @@ function Navbar() {
                             </li>
                         ))}
                     </ul>
-                    <a href="#contact" className="btn btn-primary nav-cta-mobile" onClick={() => setMobileOpen(false)}>
-                        Free Strategy Call
-                    </a>
+                    {/* Only show in mobile menu */}
+                    <div className="nav-menu-footer">
+                        <a href="#contact" className="btn btn-primary btn-full" onClick={() => setMobileOpen(false)}>
+                            Free Strategy Call 🚀
+                        </a>
+                    </div>
                 </div>
 
                 <div className="nav-right">
+                    {/* Desktop only CTA */}
                     <a href="#contact" className="btn btn-primary nav-cta">
-                        Free Strategy Call
+                        Free Strategy Call 🚀
                     </a>
                     <button
                         className="mobile-toggle"

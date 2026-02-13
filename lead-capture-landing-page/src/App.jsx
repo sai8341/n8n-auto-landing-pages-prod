@@ -5,6 +5,7 @@ import Services from './components/Services'
 import WhyChooseUs from './components/WhyChooseUs'
 import UseCases from './components/UseCases'
 import Testimonials from './components/Testimonials'
+import FeaturedProjects from './components/FeaturedProjects'
 import LeadCaptureForm from './components/LeadCaptureForm'
 import FAQ from './components/FAQ'
 import Footer from './components/Footer'
@@ -18,6 +19,7 @@ function App() {
             <TrustBar />
             <Services />
             <WhyChooseUs />
+            <FeaturedProjects />
             <UseCases />
             <Testimonials />
             <LeadCaptureForm />

@@ -27,7 +27,13 @@
 .nav-brand {
     display: flex;
     align-items: center;
+    gap: 12px;
     flex-shrink: 0;
+}
+
+.brand-logo {
+    font-size: 1.8rem;
+    filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.5));
 }
 
 .brand-name {
@@ -84,8 +90,9 @@
     border-radius: var(--radius-full);
 }
 
-.nav-cta-mobile {
+.nav-menu-footer {
     display: none;
+    margin-top: auto;
 }
 
 .mobile-toggle {
@@ -168,8 +175,14 @@
         padding: 0;
     }
 
-    .nav-cta-mobile {
-        display: inline-flex;
+    .nav-menu-footer {
+        display: block;
+        width: 100%;
+        padding-top: 20px;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-full {
         width: 100%;
     }
 

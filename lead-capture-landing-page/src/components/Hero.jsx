@@ -12,12 +12,12 @@ function Hero() {
 
             <div className="container hero-content">
                 <div className="hero-text">
-                    <div className="hero-badge">
+                    <div className="hero-badge animate-in">
                         <span className="badge-dot" />
-                        Next-Gen AI Automation for Business
+                        Next-Gen AI Automation for Business ⚡
                     </div>
 
-                    <h1 className="hero-title">
+                    <h1 className="hero-title animate-in">
                         {heroData.headline.split('\n').map((line, i) => (
                             <span key={i}>
                                 {i > 0 && <br />}
@@ -26,28 +26,30 @@ function Hero() {
                         ))}
                     </h1>
 
-                    <p className="hero-subtitle">{heroData.subheadline}</p>
+                    <p className="hero-subtitle animate-in" style={{ animationDelay: '0.1s' }}>
+                        {heroData.subheadline}
+                    </p>
 
-                    <div className="hero-actions">
+                    <div className="hero-actions animate-in" style={{ animationDelay: '0.2s' }}>
                         <a href="#contact" className="btn btn-primary btn-lg">
-                            {heroData.cta}
+                            {heroData.cta} 🚀
                         </a>
                         <a href="#services" className="btn btn-outline">
-                            {heroData.ctaSecondary} →
+                            {heroData.ctaSecondary} 🔍
                         </a>
                     </div>
 
-                    <div className="hero-trust">
+                    <div className="hero-trust animate-in" style={{ animationDelay: '0.3s' }}>
                         <div className="trust-avatars">
                             {['AR', 'PS', 'MC', 'SK', 'JT'].map((initials, i) => (
-                                <div key={i} className="trust-avatar" style={{ zIndex: 5 - i }}>
+                                <div key={i} className="trust-avatar" style={{ zIndex: 5 - i, background: `hsl(${i * 40 + 220}, 70%, 60%)` }}>
                                     {initials}
                                 </div>
                             ))}
                         </div>
                         <div className="trust-text">
-                            <span className="trust-stars">5.0 Star Rating</span>
-                            <span className="trust-count">Rated 4.9/5 by 50+ business owners</span>
+                            <span className="trust-stars">⭐⭐⭐⭐⭐ 5.0 Rating</span>
+                            <span className="trust-count">Trusted by 50+ innovative business owners</span>
                         </div>
                     </div>
                 </div>

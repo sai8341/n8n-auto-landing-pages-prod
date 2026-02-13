@@ -1,0 +1,140 @@
+/* FeaturedProjects.css */
+.projects-section {
+    background: var(--bg-secondary);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    height: 100%;
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    background: white;
+}
+
+.project-image-wrap {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.05);
+}
+
+.project-tags {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.project-tag {
+    padding: 4px 12px;
+    background: var(--bg-dark);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: var(--radius-full);
+}
+
+.project-content {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+}
+
+.project-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+.project-results {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(99, 102, 241, 0.03);
+    border-radius: var(--radius-lg);
+}
+
+.project-results h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--accent-primary);
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.project-results ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.project-results li {
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.result-icon {
+    font-size: 1rem;
+}
+
+.project-link {
+    margin-top: auto;
+    font-weight: 700;
+    color: var(--accent-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-image-wrap {
+        height: 200px;
+    }
+
+    .project-title {
+        font-size: 1.4rem;
+    }
+}

@@ -33,42 +33,42 @@ export const heroData = {
 
 export const services = [
     {
-        icon: '',
+        icon: '🤖',
         title: 'Custom AI Agents',
         description:
             'Autonomous agents designed to handle specific business roles - from sales development reps to technical support specialists.',
         features: ['24/7 Availability', 'Lead Qualification', 'Natural Language Understanding', 'CRM Integration'],
     },
     {
-        icon: '',
+        icon: '⚡',
         title: 'Workflow Automation',
         description:
             'Connecting your favorite tools (n8n, Make, Zapier) to eliminate manual data entry and repetitive business tasks.',
         features: ['API Integrations', 'Data Consolidation', 'Error Handling', 'Real-time Sync'],
     },
     {
-        icon: '',
+        icon: '💬',
         title: 'Intelligent Chatbots',
         description:
             'Next-generation RAG (Retrieval-Augmented Generation) chatbots that know your business data and provide human-like answers.',
         features: ['Site-wide Knowledge', 'Context Awareness', 'Multi-channel Support', 'Custom Persona'],
     },
     {
-        icon: '',
+        icon: '📈',
         title: 'Lead Flow Optimization',
         description:
             'End-to-end capture and nurturing systems that turn cold traffic into qualified meetings automatically.',
         features: ['High-converting Forms', 'Automated Follow-ups', 'Meeting Scheduling', 'Analytics Dashboard'],
     },
     {
-        icon: '',
+        icon: '💡',
         title: 'AI Strategy Consulting',
         description:
             'Helping leadership teams identify the highest-impact AI opportunities within their existing business processes.',
         features: ['Audit & Roadmap', 'Tool Selection', 'Cost-Benefit Analysis', 'Implementation Plan'],
     },
     {
-        icon: '',
+        icon: '🛠️',
         title: 'Managed AI Services',
         description:
             'We don\'t just build it; we manage, monitor, and optimize your AI infrastructure to ensure peak performance.',
@@ -78,22 +78,22 @@ export const services = [
 
 export const whyChooseUs = [
     {
-        icon: '',
+        icon: '🚀',
         title: 'Speed to Market',
         description: 'Deploy custom AI solutions in weeks, not months, using our proprietary automation framework.',
     },
     {
-        icon: '',
+        icon: '🎯',
         title: 'Result Driven',
         description: 'We focus on ROI - reducing operational costs and increasing top-line revenue through intelligence.',
     },
     {
-        icon: '',
+        icon: '🔒',
         title: 'Secure & Private',
         description: 'Your business data stays yours. We implement enterprise-grade security for every AI integration.',
     },
     {
-        icon: '',
+        icon: '♾️',
         title: 'Infinite Scalability',
         description: 'Our AI systems handle 10 or 10,000 requests with the same level of precision and speed.',
     },
@@ -132,6 +132,30 @@ export const testimonials = [
         text: 'Our lead capture system is now fully autonomous. The AI qualifies leads and books them directly into my calendar. It has been a game-changer.',
         service: 'Lead Flow Optimization',
     },
+]
+
+export const dummyProjects = [
+    {
+        title: 'Nexus Real Estate AI',
+        description: 'An autonomous lead qualification system that handles initial property inquiries, schedules tours, and updates CRM data in real-time.',
+        results: ['70% reduction in response time', '3.5x increase in qualified bookings', '24/7 coverage across 3 timezones'],
+        image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800',
+        tags: ['AI Agents', 'n8n', 'CRM Automation']
+    },
+    {
+        title: 'SwiftCare Health Automator',
+        description: 'HIPAA-compliant document processing workflow that extracts patient data from forms and syncs it with hospital management systems.',
+        results: ['Zero manual entry errors', '15 mins saved per patient intake', 'Encrypted data pipeline'],
+        image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800',
+        tags: ['Workflow Automation', 'OCR', 'Healthcare Tech']
+    },
+    {
+        title: 'Global Retail Concierge',
+        description: 'Global multi-language RAG chatbot for an e-commerce giant that handles order issues, returns, and personalized styling advice.',
+        results: ['82% ticket deflection rate', 'Support for 12 languages', '25% increase in repeat purchases'],
+        image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=800',
+        tags: ['Intelligent Chatbots', 'RAG', 'Retail AI']
+    }
 ]
 
 export const useCases = [
@@ -182,3 +206,4 @@ export const faqs = [
         a: 'Yes! We specialize in connecting modern AI with your current tech stack (CRMs, Email, Slack, Databases) using robust API integrations.',
     },
 ]
+

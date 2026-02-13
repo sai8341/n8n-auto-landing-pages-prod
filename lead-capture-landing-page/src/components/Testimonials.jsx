@@ -25,7 +25,7 @@ function Testimonials() {
                         <div className="testimonial-quote">"</div>
                         <p className="testimonial-text">{testimonials[active].text}</p>
                         <div className="testimonial-rating">
-                            {testimonials[active].rating}.0 Rating
+                            ⭐⭐⭐⭐⭐ {testimonials[active].rating}.0 Rating
                         </div>
                         <div className="testimonial-author">
                             <div className="author-avatar">

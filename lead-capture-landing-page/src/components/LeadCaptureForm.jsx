@@ -69,7 +69,7 @@ function LeadCaptureForm() {
                 <div className="container">
                     <div className="success-wrapper animate-in">
                         <div className="success-card glass">
-                            <div className="success-icon">✓</div>
+                            <div className="success-icon">🚀</div>
                             <h2>Inbound Request Received!</h2>
                             <p>
                                 Thank you for your interest in <strong>Saikumar.ai</strong>. Our automation specialist
@@ -80,7 +80,7 @@ function LeadCaptureForm() {
                                 className="btn btn-primary"
                                 onClick={() => setSubmitted(false)}
                             >
-                                Submit Another Inquiry
+                                Done
                             </button>
                         </div>
                     </div>
@@ -95,7 +95,7 @@ function LeadCaptureForm() {
                 <div className="form-layout">
                     {/* Left: Persuasion */}
                     <div className="form-info">
-                        <span className="section-label">Future-Proof Your Business</span>
+                        <span className="section-label">Future-Proof Your Business 🔮</span>
                         <h2 className="section-title">
                             Ready to <span className="highlight">Automate</span> Your Growth?
                         </h2>
@@ -106,21 +106,21 @@ function LeadCaptureForm() {
 
                         <div className="form-perks">
                             <div className="perk">
-                                <span className="perk-icon">→</span>
+                                <span className="perk-icon">🔍</span>
                                 <div className="perk-text">
                                     <strong>Personalized AI Audit</strong>
                                     <span>We'll identify the best automation opportunities for your specific niche.</span>
                                 </div>
                             </div>
                             <div className="perk">
-                                <span className="perk-icon">→</span>
+                                <span className="perk-icon">🤖</span>
                                 <div className="perk-text">
                                     <strong>No-Code & Custom Solutions</strong>
                                     <span>From simple n8n workflows to complex custom AI agents.</span>
                                 </div>
                             </div>
                             <div className="perk">
-                                <span className="perk-icon">→</span>
+                                <span className="perk-icon">💰</span>
                                 <div className="perk-text">
                                     <strong>ROI-Focused Approach</strong>
                                     <span>We only build solutions that either save money or generate revenue.</span>
@@ -130,9 +130,9 @@ function LeadCaptureForm() {
 
                         <div className="form-trust">
                             <div className="trust-avatar-group">
-                                <div className="trust-avatar">AR</div>
-                                <div className="trust-avatar">PS</div>
-                                <div className="trust-avatar">MC</div>
+                                <div className="trust-avatar" style={{ background: '#6366f1' }}>AR</div>
+                                <div className="trust-avatar" style={{ background: '#8b5cf6' }}>PS</div>
+                                <div className="trust-avatar" style={{ background: '#06b6d4' }}>MC</div>
                             </div>
                             <span className="trust-text">Join 50+ businesses scaling with our AI solutions.</span>
                         </div>

@@ -84,6 +84,17 @@
     letter-spacing: -0.04em;
 }
 
+/* Reduce size for Laptops/Desktops as requested */
+@media (min-width: 1025px) {
+    .hero-title {
+        font-size: 3.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+}
+
 .hero-subtitle {
     font-size: 1.35rem;
     color: var(--text-muted);
@@ -252,7 +263,7 @@
     }
 
     .hero-title {
-        font-size: 3.2rem;
+        font-size: 2.8rem;
     }
 }
 
